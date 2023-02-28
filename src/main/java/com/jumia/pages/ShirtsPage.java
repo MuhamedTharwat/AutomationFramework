@@ -24,4 +24,5 @@ public class ShirtsPage {
         action.click(addQtyBtn);
         action.click(closeAddToCartBtn);
     }
+
 }
