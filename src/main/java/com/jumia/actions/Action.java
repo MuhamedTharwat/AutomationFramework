@@ -15,6 +15,9 @@ public class Action extends BaseClass {
     public void click(By element){
         driver.findElement(element).click();
     }
+    public String getElementText(By element){
+        return driver.findElement(element).getText();
+    }
     public boolean findElement(By element) {
         boolean flag = false;
         try {

@@ -1,6 +1,7 @@
 package com.jumia;
 
 import com.jumia.base.BaseClass;
+import com.jumia.pages.CartPage;
 import com.jumia.pages.HomePage;
 import com.jumia.pages.LoginPage;
 import com.jumia.pages.ShirtsPage;
@@ -21,6 +22,7 @@ public class Testx extends BaseClass {
         HomePage homePageObj = new HomePage();
         LoginPage loginPageObj = new LoginPage();
         ShirtsPage shirtsPageObj = new ShirtsPage();
+        CartPage cartPageObj =new CartPage();
         homePageObj.skipWelcomePopUp();
         homePageObj.openLoginPage();
 //        loginPageObj.registerUser("jamefij283a000@wiroute.com", "Test@1234@",
@@ -31,6 +33,7 @@ public class Testx extends BaseClass {
         homePageObj.openCategoryPage();
         shirtsPageObj.addTProduct1ToCart();
         shirtsPageObj.addTProduct2ToCart();
-        homePageObj.openCartPage();
+        driver.navigate().refresh();
+        Assert.assertEquals(cartPageObj.calculateProductsTotalPrice(),cartPageObj.subTotalPrice());
     }
 }

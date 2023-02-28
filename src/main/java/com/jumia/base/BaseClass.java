@@ -54,6 +54,10 @@ public class BaseClass {
         wait = new WebDriverWait(driver,Duration.ofSeconds(Long.parseLong(properties.getProperty("explicitWait"))));
         wait.until(ExpectedConditions.visibilityOfElementLocated(element));
     }
+    public static void waitUntilElementIsEnabled(By element){
+        wait = new WebDriverWait(driver,Duration.ofSeconds(Long.parseLong(properties.getProperty("explicitWait"))));
+        wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
 
 
 }
