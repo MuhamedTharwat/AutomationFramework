@@ -12,18 +12,25 @@ public class HomePage extends BaseClass {
     By signInPageBtn = By.xpath("//a[normalize-space()='Sign In'][contains(@href, 'account/login')]");
     By fashionCategory = By.xpath("//a[@href='/category-fashion-by-jumia/']");
     By shirtsCategory = By.xpath("//a[normalize-space()='Shirts']");
+    By cartPage = By.xpath("//a[normalize-space()='Cart']");
     public void skipWelcomePopUp(){
         if(action.findElement(welcomePopUp)){
             action.click(closePopUpBtn);
         }
         return;
     }
-    public void openLoginPage(){
+
+    public void openLoginPage() {
         action.click(accountDropDown);
         action.click(signInPageBtn);
     }
-    public void openCategoryPage(){
-        action.hoverToElement(fashionCategory);
+
+    public void openCategoryPage() {
+        action.hoverOnElement(fashionCategory);
         action.click(shirtsCategory);
+    }
+
+    public void openCartPage() {
+        action.click(cartPage);
     }
 }
