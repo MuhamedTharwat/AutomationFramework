@@ -1,6 +1,6 @@
-package com.jumia.actions;
+package com.jumia.tests.actions;
 
-import com.jumia.base.BaseClass;
+import com.jumia.tests.base.BaseClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;

@@ -1,4 +1,4 @@
-package com.jumia.base;
+package com.jumia.tests.base;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
@@ -58,6 +58,8 @@ public class BaseClass {
         wait = new WebDriverWait(driver,Duration.ofSeconds(Long.parseLong(properties.getProperty("explicitWait"))));
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
-
+    public static void refreshCurrentPage(){
+        driver.navigate().refresh();
+    }
 
 }

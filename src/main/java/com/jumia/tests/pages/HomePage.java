@@ -1,7 +1,7 @@
-package com.jumia.pages;
+package com.jumia.tests.pages;
 
-import com.jumia.actions.Action;
-import com.jumia.base.BaseClass;
+import com.jumia.tests.actions.Action;
+import com.jumia.tests.base.BaseClass;
 import org.openqa.selenium.By;
 
 public class HomePage extends BaseClass {
@@ -10,6 +10,7 @@ public class HomePage extends BaseClass {
     By closePopUpBtn = By.xpath("//div[@id='pop']//button[@class='cls']");
     By accountDropDown = By.xpath("//*[@id='dpdw-login']//parent::div[@class='dpdw _pcent']");
     By signInPageBtn = By.xpath("//a[normalize-space()='Sign In'][contains(@href, 'account/login')]");
+    By logOutBtn = By.xpath("//div[@id='dpdw-login-box']//button[normalize-space()='Logout']");
     By fashionCategory = By.xpath("//a[@href='/category-fashion-by-jumia/']");
     By shirtsCategory = By.xpath("//a[normalize-space()='Shirts']");
     By cartPage = By.xpath("//a[normalize-space()='Cart']");
@@ -25,12 +26,16 @@ public class HomePage extends BaseClass {
         action.click(signInPageBtn);
     }
 
-    public void openCategoryPage() {
+    public void navigateToShirtsCategory() {
         action.hoverOnElement(fashionCategory);
         action.click(shirtsCategory);
     }
 
     public void openCartPage() {
         action.click(cartPage);
+    }
+    public void logOut(){
+        action.click(accountDropDown);
+        action.click(logOutBtn);
     }
 }

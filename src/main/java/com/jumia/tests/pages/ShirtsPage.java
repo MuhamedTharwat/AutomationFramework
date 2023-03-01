@@ -1,7 +1,7 @@
-package com.jumia.pages;
+package com.jumia.tests.pages;
 
-import com.jumia.actions.Action;
-import com.jumia.base.BaseClass;
+import com.jumia.tests.actions.Action;
+import com.jumia.tests.base.BaseClass;
 import org.openqa.selenium.By;
 
 public class ShirtsPage extends BaseClass {
