@@ -7,6 +7,7 @@ import com.jumia.tests.pages.LoginPage;
 import com.jumia.tests.pages.ShirtsPage;
 import com.jumia.tests.utility.DataProviders;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -54,6 +55,10 @@ public class UserRegistrationTestWithDDT extends BaseClass {
         refreshCurrentPage();
         Assert.assertEquals(cartPageObj.calculateProductsTotalPrice(), cartPageObj.subTotalPrice());
 
+    }
+    @AfterTest
+    public void tearDown(){
+        closeCurrentPage();
     }
 
 }

@@ -61,5 +61,6 @@ public class BaseClass {
     public static void refreshCurrentPage(){
         driver.navigate().refresh();
     }
+    public static void closeCurrentPage(){driver.close();}
 
 }

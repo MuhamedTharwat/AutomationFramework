@@ -1,0 +1,8 @@
+com\jumia\tests\base\BaseClass.class
+com\jumia\tests\pages\LoginPage.class
+com\jumia\tests\utility\ExcelFileManger.class
+com\jumia\tests\pages\CartPage.class
+com\jumia\tests\utility\DataProviders.class
+com\jumia\tests\pages\HomePage.class
+com\jumia\tests\actions\Action.class
+com\jumia\tests\pages\ShirtsPage.class
