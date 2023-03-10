@@ -7,9 +7,7 @@ import com.jumia.tests.pages.LoginPage;
 import com.jumia.tests.pages.ShirtsPage;
 import com.jumia.tests.utility.DataProviders;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 public class UserRegistrationTestWithDDT extends BaseClass {
     HomePage homePageObj=null;
@@ -23,13 +21,11 @@ public class UserRegistrationTestWithDDT extends BaseClass {
         launchWeb();
     }
 
-    @Test(priority = 1,dataProvider = "NewUserData",dataProviderClass = DataProviders.class)
+    @Test(priority = 1,dataProvider = "Credentials",dataProviderClass = DataProviders.class)
     public void Task1VerifyUserRegistration(String email, String password,
                                             String fname, String lname, String phone, String bdate) {
         homePageObj = new HomePage();
         loginPageObj = new LoginPage();
-        shirtsPageObj = new ShirtsPage();
-        cartPageObj = new CartPage();
 
         homePageObj.skipWelcomePopUp();
         homePageObj.openLoginPage();
@@ -39,7 +35,7 @@ public class UserRegistrationTestWithDDT extends BaseClass {
     }
 
     @Test(dependsOnMethods = ("Task1VerifyUserRegistration"),
-            dataProvider = "OldUserData",dataProviderClass = DataProviders.class)
+            dataProvider = "Login",dataProviderClass = DataProviders.class)
     public void Task2LoginWithCreatedUserAndAddProducts(String email,String password) {
         homePageObj = new HomePage();
         loginPageObj = new LoginPage();

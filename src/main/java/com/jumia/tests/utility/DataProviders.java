@@ -4,14 +4,33 @@ import java.io.IOException;
 import org.testng.annotations.DataProvider;
 public class DataProviders {
 
-    @DataProvider(name = "NewUserData")
-    public Object[][] fullUserData() throws IOException {
-        ExcelFileManger excelFile = new ExcelFileManger("src/test/java/testdata/JumiaTestData.xlsx");
-        return excelFile.getExcelFullData();
+    @DataProvider(name = "Credentials")
+    public Object[][] getAllRegisterData() throws IOException {
+        ExcelFileManger excelFile = new ExcelFileManger("src/test/java/testdata/TestData.xlsx");
+        int rows =excelFile.getRowCount("Credentials");
+        int cols =excelFile.getColumnCount("Credentials");
+        int actRows= rows-1;
+        String [][] excelData = new String[actRows][cols];
+        for (int i=0;i<actRows;i++){
+            for (int j=0;j<cols;j++){
+                excelData[i][j]=excelFile.getCellValue("Credentials",i+1,j);
+            }
+        }
+        return excelData;
     }
-    @DataProvider(name = "OldUserData")
-    public Object[][] userData() throws IOException {
-        ExcelFileManger excelFile = new ExcelFileManger("src/test/java/testdata/JumiaTestData.xlsx");
-        return excelFile.getExcelPartialData();
+    @DataProvider(name = "Login")
+    public Object[][] getOnlyLoginData() throws IOException {
+        ExcelFileManger excelFile = new ExcelFileManger("src/test/java/testdata/TestData.xlsx");
+        int rows =excelFile.getRowCount("Credentials");
+        int cols =excelFile.getColumnCount("Credentials");
+        int actRows= rows-1;
+        int actCols = cols-4;
+        String [][] excelData = new String[actRows][actCols];
+        for (int i=0;i<actRows;i++){
+            for (int j=0;j<actCols;j++){
+                excelData[i][j]=excelFile.getCellValue("Credentials",i+1,j);
+            }
+        }
+        return excelData;
     }
 }

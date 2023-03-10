@@ -1,0 +1,1 @@
+{"uuid":"6d15d71e-6687-4091-94f3-302a5dec309a","name":"com.jumia.tests.Testx.setUp","children":["38c02b1e-8c3f-4d5a-8323-f10f777bad12"],"description":"","befores":[{"name":"setUp","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1678460398865,"stop":1678460404738}],"afters":[],"start":1678460398865,"stop":1678460404738}

@@ -10,49 +10,42 @@ import java.io.IOException;
 
 public class ExcelFileManger {
     FileInputStream inputStream = null;
-    XSSFWorkbook workbook = null ;
+    XSSFWorkbook workbook = null;
     XSSFSheet sheet = null;
     XSSFRow row = null;
+
     public ExcelFileManger(String path) {
         try {
             inputStream = new FileInputStream(path);
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found plz Check the path");
+            workbook = new XSSFWorkbook(inputStream);
+            inputStream.close();
+        } catch (Exception e) {
+            System.out.println("Error with File");
             e.printStackTrace();
         }
 
-    }
-    public Object[][] getExcelFullData() throws IOException {
-        workbook = new XSSFWorkbook(inputStream);
-        sheet = workbook.getSheetAt(0);
-        int rowCount= sheet.getLastRowNum()+1;
-        int colCount= 6;
-
-        String [][] excelData = new String[rowCount][colCount];
-        for (int i=0;i<rowCount;i++){
-            for(int j=0;j<colCount;j++){
-                row = sheet.getRow(i);
-                excelData[i][j]=row.getCell(j).toString();
-            }
-        }
-        return excelData;
 
     }
-    public Object[][] getExcelPartialData() throws IOException {
-        workbook = new XSSFWorkbook(inputStream);
-        sheet = workbook.getSheetAt(0);
-        int rowCount= sheet.getLastRowNum()+1;
-        int colCount= 2;
+    public int getRowCount(String sheetName) {
+        int index = workbook.getSheetIndex(sheetName);
+        sheet = workbook.getSheetAt(index);
+        int rowCount = sheet.getLastRowNum() + 1;
+        return rowCount;
+    }
 
-        String [][] excelData = new String[rowCount][colCount];
-        for (int i=0;i<rowCount;i++){
-            for(int j=0;j<colCount;j++){
-                row = sheet.getRow(i);
-                excelData[i][j]=row.getCell(j).toString();
-            }
-        }
-        return excelData;
+    public int getColumnCount(String sheetName) {
+        int index = workbook.getSheetIndex(sheetName);
+        sheet = workbook.getSheetAt(index);
+        int columnCount = sheet.getRow(0).getLastCellNum();
+        return columnCount;
+    }
 
+    public String getCellValue(String sheetName, int rowNum, int colNum) {
+        int index = workbook.getSheetIndex(sheetName);
+        sheet = workbook.getSheetAt(index);
+        row = sheet.getRow(rowNum);
+        String cellValue = row.getCell(colNum).toString();
+        return cellValue;
     }
 
 

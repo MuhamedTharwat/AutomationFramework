@@ -1,0 +1,1 @@
+{"uuid":"e7c6f9b5-4232-40a6-ba26-6466ebfdc077","name":"AutomationTask","children":["74fa6d09-b3f4-4043-a585-729796353b04"],"befores":[{"name":"setUp","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1678455798153,"stop":1678455809081}],"afters":[],"start":1678455798066,"stop":1678455809556}
