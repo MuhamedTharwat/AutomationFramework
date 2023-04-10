@@ -2,6 +2,8 @@ package com.amazon.tests;
 
 import base.BaseClass;
 import com.amazon.pages.HomePage;
+import com.amazon.pages.LoginPage;
+import com.amazon.pages.VideoGamePage;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -14,7 +16,13 @@ public class DummyClass extends BaseClass {
     @Test
     public void tc (){
         HomePage homePageObj = new HomePage();
+        LoginPage loginPageObj = new LoginPage();
+        VideoGamePage videoGamePageObj = new VideoGamePage();
         homePageObj.openLoginPage();
+        loginPageObj.login("dxsheetos@gmail.com","XjgGY.5bu@5yPJq");
+        //homePageObj.navigateToVideoGamesSection();
+        homePageObj.navigateToSection("Video Games","All Video Games");
+        videoGamePageObj.filter();
 
     }
 }
