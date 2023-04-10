@@ -1,19 +1,11 @@
 package com.jumia.tests;
 
-import com.jumia.tests.base.BaseClass;
-import com.jumia.tests.pages.CartPage;
-import com.jumia.tests.pages.HomePage;
-import com.jumia.tests.pages.LoginPage;
-import com.jumia.tests.pages.ShirtsPage;
-import com.jumia.tests.utility.DataProviders;
-import com.jumia.tests.utility.ExcelFileManger;
-import org.testng.Assert;
+import base.BaseClass;
+import com.jumia.pages.HomePage;
+import com.jumia.pages.LoginPage;
+import utility.DataProviders;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import java.io.IOException;
 
 public class Testx extends BaseClass {
 //    @DataProvider(name = "userData")

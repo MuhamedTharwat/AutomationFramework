@@ -1,10 +1,10 @@
 package com.jumia.tests;
 
-import com.jumia.tests.base.BaseClass;
-import com.jumia.tests.pages.CartPage;
-import com.jumia.tests.pages.HomePage;
-import com.jumia.tests.pages.LoginPage;
-import com.jumia.tests.pages.ShirtsPage;
+import base.BaseClass;
+import com.jumia.pages.CartPage;
+import com.jumia.pages.HomePage;
+import com.jumia.pages.LoginPage;
+import com.jumia.pages.ShirtsPage;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
