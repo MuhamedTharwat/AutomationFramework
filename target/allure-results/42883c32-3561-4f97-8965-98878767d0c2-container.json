@@ -1,0 +1,1 @@
+{"uuid":"42883c32-3561-4f97-8965-98878767d0c2","name":"AutomationTaskAmazon","children":["655d92f7-b9e4-4a29-9b6c-c1aa80c00977"],"befores":[{"name":"setUp","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1681314257095,"stop":1681314271850}],"afters":[],"start":1681314257038,"stop":1681314322182}

@@ -8,7 +8,7 @@ import org.openqa.selenium.interactions.Actions;
 public class LoginPage extends BaseClass {
     Action action= new Action();
     Actions ac = new Actions(driver);
-    By emailTxtBox = By.name("email");
+    By emailTxtBox = By.id("input_identifierValue");
     By continueBtn1 = By.xpath("//button[@type='submit'][contains(normalize-space(),'Continue')]");
     By continueBtn2 = By.xpath("//*[@id='card_password']//button");
     By continueBtn3 = By.xpath("//*[@id='card_profile_details']//button");

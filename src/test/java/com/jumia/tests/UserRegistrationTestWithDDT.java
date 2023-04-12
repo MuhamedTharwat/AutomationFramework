@@ -21,7 +21,7 @@ public class UserRegistrationTestWithDDT extends BaseClass {
         launchWeb();
     }
 
-    @Test(priority = 1,dataProvider = "Credentials",dataProviderClass = DataProviders.class)
+    @Test(priority = 1,dataProvider = "JumiaCredentials",dataProviderClass = DataProviders.class)
     public void Task1VerifyUserRegistration(String email, String password,
                                             String fname, String lname, String phone, String bdate) {
         homePageObj = new HomePage();
@@ -35,7 +35,7 @@ public class UserRegistrationTestWithDDT extends BaseClass {
     }
 
     @Test(dependsOnMethods = ("Task1VerifyUserRegistration"),
-            dataProvider = "Login",dataProviderClass = DataProviders.class)
+            dataProvider = "JumiaLogin",dataProviderClass = DataProviders.class)
     public void Task2LoginWithCreatedUserAndAddProducts(String email,String password) {
         homePageObj = new HomePage();
         loginPageObj = new LoginPage();

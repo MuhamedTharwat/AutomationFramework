@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.List;
+
 public class Action extends BaseClass {
     JavascriptExecutor js = (JavascriptExecutor) driver;
     public void type(By element, String text){
@@ -14,6 +16,9 @@ public class Action extends BaseClass {
     }
     public void click(By element){
         driver.findElement(element).click();
+    }
+    public List<WebElement> getElements(By element){
+        return driver.findElements(element);
     }
     public String getElementText(By element){
         return driver.findElement(element).getText();
