@@ -21,8 +21,12 @@ public class DummyClass extends BaseClass {
         homePageObj.openLoginPage();
         loginPageObj.login("dxsheetos@gmail.com","XjgGY.5bu@5yPJq");
         //homePageObj.navigateToVideoGamesSection();
+        //homePageObj.switchLanguageEN();
         homePageObj.navigateToSection("Video Games","All Video Games");
-        videoGamePageObj.filter();
+        videoGamePageObj.filterByFreeShipping();
+        videoGamePageObj.sortByPriceHighToLow();
+        //videoGamePageObj.filterByCost();
+        videoGamePageObj.test();
 
     }
 }

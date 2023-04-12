@@ -88,5 +88,10 @@ public class Action extends BaseClass {
         js.executeScript("arguments[0].click();", webElement);
     }
 
+    public void jsOpenLinkInNewTab(String link){
+        String newTabScript = "window.open('" + link + "','_blank');";
+        js.executeScript(newTabScript);
+    }
+
 
 }
