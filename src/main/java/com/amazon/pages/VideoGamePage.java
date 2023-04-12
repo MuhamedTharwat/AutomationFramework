@@ -3,7 +3,6 @@ package com.amazon.pages;
 import actions.Action;
 import base.BaseClass;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
@@ -12,9 +11,9 @@ import java.util.List;
 public class VideoGamePage extends BaseClass {
     Action action = new Action();
     By freeShippingFilter = By.xpath("//div[@id='s-refinements']//*[normalize-space()='Free Shipping']");
-    By sortFeatureBtn = By.xpath("//span[@id='a-autoid-0-announce']");
+    By sortFeatureBtn = By.xpath("//span[@id='a-autoid-0-announce']|//*[@id='a-autoid-22-announce']");
     By sortFromHighToLow = By.xpath("//a[normalize-space()='Price: High to Low'] | //a[@id='s-result-sort-select_2'] ");
-
+    By addToCartBtn = By.id("add-to-cart-button");
     public void filterByFreeShipping(){
         action.click(freeShippingFilter);
     }
@@ -92,7 +91,7 @@ public class VideoGamePage extends BaseClass {
         List<String> names = new ArrayList<String>();
         List<Integer> prices = getPageProductsPrices();
         for(int i=0 ; i<prices.size();i++){
-            if(prices.get(i)<15000){
+            if(prices.get(i)>20000){
                 System.out.println(productNames.get(i));
                 System.out.println(prices.get(i));
                 names.add(productNames.get(i));
@@ -101,15 +100,33 @@ public class VideoGamePage extends BaseClass {
         }
 
     }
+    public List<String> getProductsNames(){
+        List<String> productNames = getPageProductsNames();
+        List<String> names = new ArrayList<String>();
+        List<Integer> prices = getPageProductsPrices();
+        for(int i=0 ; i<prices.size();i++){
+            if(prices.get(i)>20000){
+                System.out.println(productNames.get(i));
+                System.out.println(prices.get(i));
+                names.add(productNames.get(i));
+            }
+        }
+        return names;
+
+    }
 
     public void addToCart(int index){
         WebElement productElement = getPageProductsElements().get(index).findElement(By.xpath(".//h2//a"));
         action.jsOpenLinkInNewTab(productElement.getAttribute("href"));
-        ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
-        driver.switchTo().window(tabs.get(1));
-        driver.findElement(By.id("add-to-cart-button")).click();
+        //ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+        ArrayList<String> tabs = getCurrentTabs();
+        //driver.switchTo().window(tabs.get(1));
+        switchBetweenTabs(tabs,1);
+        action.click(addToCartBtn);
+        //driver.findElement(By.id("add-to-cart-button")).click();
         closeCurrentPage();
-        driver.switchTo().window(tabs.get(0));
+        //driver.switchTo().window(tabs.get(0));
+        switchBetweenTabs(tabs,0);
 
     }
 }

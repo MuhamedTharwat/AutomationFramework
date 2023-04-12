@@ -8,6 +8,7 @@ public class HomePage extends BaseClass {
     Action action = new Action();
     By languagesList = By.id("icp-nav-flyout");
     By accountList = By.id("nav-link-accountList");
+    By cart = By.id("nav-cart");
     By signInBtn = By.id("nav-flyout-ya-signin");
     By languageEn = By.xpath("//*[@id='nav-flyout-icp']//span[contains(text(),'En')]");
     By languageAR = By.xpath("//*[@id='nav-flyout-icp']//span[contains(text(),'AR')]");
@@ -28,6 +29,9 @@ public class HomePage extends BaseClass {
     public void openLoginPage(){
         action.jsHoverOnElement(accountList);
         action.click(signInBtn);
+    }
+    public void openCartPage(){
+        action.click(cart);
     }
     public void navigateToVideoGamesSection(){
         action.click(allNavMenu);

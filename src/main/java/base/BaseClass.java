@@ -13,11 +13,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Properties;
 
 public class BaseClass {
@@ -73,12 +71,12 @@ public class BaseClass {
         driver.navigate().refresh();
     }
     public static void closeCurrentPage(){driver.close();}
-    public static List<String> getTabs(){
+    public static ArrayList<String> getCurrentTabs(){
         ArrayList<String>  tabs = new ArrayList<String>(driver.getWindowHandles());
         return tabs;
     }
-    public static void switchBetweenTabs(int tabIndex){
-        driver.switchTo().window(getTabs().get(tabIndex));
+    public static void switchBetweenTabs(ArrayList<String> tabs,int tabIndex){
+        driver.switchTo().window(tabs.get(tabIndex));
     }
 
 }
