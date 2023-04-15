@@ -30,8 +30,8 @@ public class UserCanAddProductsToCart extends BaseClass {
         loginPageObj.login(email,password);
         homePageObj.navigateToSection("Video Games","All Video Games");
         videoGamePageObj.filterByFreeShipping();
-        videoGamePageObj.sortByPriceHighToLow();
         videoGamePageObj.filterByNew();
+        videoGamePageObj.sortByPriceHighToLow();
 
         List<String> names = videoGamePageObj.getAllProductsNamesBelowPrice(10000);
         videoGamePageObj.addALLProductsToCartByBelowPrice(10000);

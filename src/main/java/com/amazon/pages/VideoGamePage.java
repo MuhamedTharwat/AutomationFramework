@@ -21,6 +21,7 @@ public class VideoGamePage extends BaseClass {
         action.click(freeShippingFilter);
     }
     public void sortByPriceHighToLow(){
+        waitUntilElementIsEnabled(sortFeatureBtn);
         action.jsClickOnElement(sortFeatureBtn);
         action.click(sortFromHighToLow);
     }
@@ -97,7 +98,6 @@ public class VideoGamePage extends BaseClass {
             }
             else break;
         }
-        List<String> productNames = getPageProductsNames();
         List<Integer> prices = getPageProductsPrices();
         for(int i=0 ; i<prices.size();i++){
             if(prices.get(i)<price){

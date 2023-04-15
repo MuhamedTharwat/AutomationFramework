@@ -44,8 +44,8 @@ public class HomePage extends BaseClass {
         action.click(allNavMenu);
         action.click(seeAllList);
         action.click(By.xpath(String.format
-                ("//div[@id='hmenu-content']//li[normalize-space()='%s']",sectionName)));
+                ("//div[@id='hmenu-content']//a[normalize-space()='%s']",sectionName)));
         action.click(By.xpath(String.format
-                ("//div[@id='hmenu-content']//li[normalize-space()='%s']",selectedOptionName)));
+                ("//div[@id='hmenu-content']//a[normalize-space()='%s']",selectedOptionName)));
     }
 }
