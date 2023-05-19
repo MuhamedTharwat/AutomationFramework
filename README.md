@@ -4,15 +4,20 @@ Execution Record : https://www.linkedin.com/feed/update/urn:li:activity:70634406
 
 
 📝 The main Framework include :
+
 -Selenium Webdriver
+
 -Maven
+
 -TestNG
 
 🏗️ Project Design:
+
 -Page Object Model (POM) design pattern
+
 -Data Driven approach "reading test data from excel file"
 
-💥The Framework can be applied on 2 maib Websites with the following scenarios :
+💥The Framework can be applied on 2 main Websites with the following scenarios :
 
 
 1-Amazon:  
