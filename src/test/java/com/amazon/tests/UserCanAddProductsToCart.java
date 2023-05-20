@@ -14,12 +14,13 @@ import java.util.List;
 
 public class UserCanAddProductsToCart extends BaseClass {
     @BeforeTest
-    public void setUp(){
+    public void setUp() {
         loadConfig();
         launchWeb();
     }
-    @Test(dataProvider = "AmazonLogin",dataProviderClass = DataProviders.class)
-    public void tc (String email, String password){
+
+    @Test(dataProvider = "AmazonLogin", dataProviderClass = DataProviders.class)
+    public void tc(String email, String password) {
         HomePage homePageObj = new HomePage();
         LoginPage loginPageObj = new LoginPage();
         VideoGamePage videoGamePageObj = new VideoGamePage();
@@ -27,8 +28,8 @@ public class UserCanAddProductsToCart extends BaseClass {
         refreshCurrentPage();
         homePageObj.openLoginPage();
 
-        loginPageObj.login(email,password);
-        homePageObj.navigateToSection("Video Games","All Video Games");
+        loginPageObj.login(email, password);
+        homePageObj.navigateToSection("Video Games", "All Video Games");
         videoGamePageObj.filterByFreeShipping();
         videoGamePageObj.filterByNew();
         videoGamePageObj.sortByPriceHighToLow();
@@ -38,7 +39,7 @@ public class UserCanAddProductsToCart extends BaseClass {
         homePageObj.openCartPage();
         List<String> cartNames = cartPageObj.getCartProductsNames();
         //compare products names with actual name added in the cart page
-        boolean result =cartNames.stream().allMatch(s -> names.contains(s));
+        boolean result = cartNames.stream().allMatch(s -> names.contains(s));
         Assert.assertTrue(result);
 
     }

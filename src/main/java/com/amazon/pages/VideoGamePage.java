@@ -17,42 +17,46 @@ public class VideoGamePage extends BaseClass {
     By allPageProducts = By.xpath("//*[contains(@class, 'widgetId=search-results')]//span[contains(@class,'a-price-whole')]//ancestor:: div[@class='a-section']");
     By addToCartBtn = By.id("add-to-cart-button");
     By nextPage = By.xpath("//a[normalize-space()='Next']");
-    public void filterByFreeShipping(){
+
+    public void filterByFreeShipping() {
         action.click(freeShippingFilter);
     }
-    public void sortByPriceHighToLow(){
+
+    public void sortByPriceHighToLow() {
         waitUntilElementIsEnabled(sortFeatureBtn);
         action.jsClickOnElement(sortFeatureBtn);
         action.click(sortFromHighToLow);
     }
-    public void filterByNew(){
+
+    public void filterByNew() {
         action.click(newFilter);
     }
 
     // Find all product elements on the page
-    private List<WebElement> getPageProductsElements(){
+    private List<WebElement> getPageProductsElements() {
         //return driver.findElements(By.xpath("//*[contains(@class, 'widgetId=search-results')]//span[contains(@class,'a-price-whole')]//ancestor:: div[@class='a-section']"));
         waitUntilElementIsVisible(allPageProducts);
         return action.getElements(allPageProducts);
     }
 
-    private boolean checkPrice(int price){
-        Boolean flag=false;
+    private boolean checkPrice(int price) {
+        Boolean flag = false;
         List<Integer> prices = getPageProductsPrices();
-        for(int i=0 ; i<prices.size();i++){
-            if(prices.get(i)<price){
-                flag=true;
+        for (int i = 0; i < prices.size(); i++) {
+            if (prices.get(i) < price) {
+                flag = true;
                 break;
             }
         }
         return flag;
     }
+
     // Find all product prices on the page
-    private List<Integer> getPageProductsPrices(){
+    private List<Integer> getPageProductsPrices() {
         List<Integer> prices = new ArrayList<Integer>();
         List<WebElement> productElements = getPageProductsElements();
 
-        for (WebElement product : productElements){
+        for (WebElement product : productElements) {
             // Find the price element within the product element
             /*addition of a . at the beginning of the XPath expression,
              makes the search start from the current element
@@ -69,48 +73,51 @@ public class VideoGamePage extends BaseClass {
         }
         return prices;
     }
+
     // Find all product names on the page
-    public List<String> getPageProductsNames(){
+    public List<String> getPageProductsNames() {
         List<String> productNames = new ArrayList<String>();
         List<WebElement> productElements = getPageProductsElements();
-        for (WebElement product : productElements){
+        for (WebElement product : productElements) {
             WebElement productName = product.findElement(By.xpath(".//h2//span"));
-            String name=productName.getText();
+            String name = productName.getText();
             productNames.add(name);
         }
         return productNames;
     }
+
     //add to cart all products above a specific price
-    public void addALLProductsToCartAbovePrice(int price){
+    public void addALLProductsToCartAbovePrice(int price) {
         List<String> productNames = getPageProductsNames();
         List<Integer> prices = getPageProductsPrices();
-        for(int i=0 ; i<prices.size();i++){
-            if(prices.get(i)>price){
+        for (int i = 0; i < prices.size(); i++) {
+            if (prices.get(i) > price) {
                 addToCart(i);
             }
         }
     }
+
     //add to cart all products below a specific price
-    public void addALLProductsToCartByBelowPrice(int price){
+    public void addALLProductsToCartByBelowPrice(int price) {
         while (true) {
             if (!checkPrice(price)) {
                 action.click(nextPage);
-            }
-            else break;
+            } else break;
         }
         List<Integer> prices = getPageProductsPrices();
-        for(int i=0 ; i<prices.size();i++){
-            if(prices.get(i)<price){
+        for (int i = 0; i < prices.size(); i++) {
+            if (prices.get(i) < price) {
                 addToCart(i);
             }
         }
     }
-    public List<String> getAllProductsNamesAbovePrice(int price){
+
+    public List<String> getAllProductsNamesAbovePrice(int price) {
         List<String> productNames = getPageProductsNames();
         List<String> names = new ArrayList<String>();
         List<Integer> prices = getPageProductsPrices();
-        for(int i=0 ; i<prices.size();i++){
-            if(prices.get(i)>price){
+        for (int i = 0; i < prices.size(); i++) {
+            if (prices.get(i) > price) {
                 System.out.println(productNames.get(i));
                 System.out.println(prices.get(i));
                 names.add(productNames.get(i));
@@ -119,18 +126,18 @@ public class VideoGamePage extends BaseClass {
         return names;
 
     }
-    public List<String> getAllProductsNamesBelowPrice(int price){
+
+    public List<String> getAllProductsNamesBelowPrice(int price) {
         while (true) {
             if (!checkPrice(price)) {
                 action.click(nextPage);
-            }
-            else break;
+            } else break;
         }
         List<String> productNames = getPageProductsNames();
         List<String> names = new ArrayList<String>();
         List<Integer> prices = getPageProductsPrices();
-        for(int i=0 ; i<prices.size();i++){
-            if(prices.get(i)<price){
+        for (int i = 0; i < prices.size(); i++) {
+            if (prices.get(i) < price) {
                 System.out.println(productNames.get(i));
                 System.out.println(prices.get(i));
                 names.add(productNames.get(i));
@@ -139,18 +146,19 @@ public class VideoGamePage extends BaseClass {
         return names;
 
     }
+
     //open the selected index of page products in a new tab and add it to cart and return to the main tab
-    private void addToCart(int index){
+    private void addToCart(int index) {
         WebElement productElement = getPageProductsElements().get(index).findElement(By.xpath(".//h2//a"));
         action.jsOpenLinkInNewTab(productElement.getAttribute("href"));
         ArrayList<String> tabs = getCurrentTabs();
         //switch to the product opened tab
-        switchBetweenTabs(tabs,1);
+        switchBetweenTabs(tabs, 1);
         waitUntilElementIsEnabled(addToCartBtn);
         action.jsClickOnElement(addToCartBtn);
         closeCurrentPage();
         //return to the main tab
-        switchBetweenTabs(tabs,0);
+        switchBetweenTabs(tabs, 0);
 
     }
 }

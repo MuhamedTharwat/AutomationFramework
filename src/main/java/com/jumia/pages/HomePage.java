@@ -14,8 +14,9 @@ public class HomePage extends BaseClass {
     By fashionCategory = By.xpath("//a[@href='/category-fashion-by-jumia/']");
     By shirtsCategory = By.xpath("//a[normalize-space()='Shirts']");
     By cartPage = By.xpath("//a[normalize-space()='Cart']");
-    public void skipWelcomePopUp(){
-        if(action.findElement(welcomePopUp)){
+
+    public void skipWelcomePopUp() {
+        if (action.findElement(welcomePopUp)) {
             action.click(closePopUpBtn);
         }
         return;
@@ -34,7 +35,8 @@ public class HomePage extends BaseClass {
     public void openCartPage() {
         action.click(cartPage);
     }
-    public void logOut(){
+
+    public void logOut() {
         action.click(accountDropDown);
         action.click(logOutBtn);
     }

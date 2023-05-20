@@ -12,12 +12,12 @@ public class CartPage extends BaseClass {
     By product2Price = By.xpath("//div[@class='col12']//article//article[2]//div[@class='prc']");
     By subTotalPrice = By.xpath("//div[@class='col4']//article//p[contains(text(),'EGP')]");
 
-    public float calculateProduct1TotalPrice(){
-        String qty1= action.getElementText(product1Qty);
+    public float calculateProduct1TotalPrice() {
+        String qty1 = action.getElementText(product1Qty);
         float product1Qty = Float.parseFloat(qty1);
-        String price1= action.getElementText(product1Price);
+        String price1 = action.getElementText(product1Price);
         float product1UnitPrice = Float.parseFloat(price1.substring(4));
-        float product1ToTalPrice = product1Qty*product1UnitPrice;
+        float product1ToTalPrice = product1Qty * product1UnitPrice;
         return product1ToTalPrice;
 
 //        String q2= action.getElementText(product2Qty);
@@ -33,6 +33,7 @@ public class CartPage extends BaseClass {
 //        float t = Float.parseFloat(sub.substring(4));
 
     }
+
     public float calculateProduct2TotalPrice() {
         String qty2 = action.getElementText(product2Qty);
         float product2Qty = Float.parseFloat(qty2);
@@ -41,13 +42,15 @@ public class CartPage extends BaseClass {
         float product2ToTalPrice = product2Qty * product2UnitPrice;
         return product2ToTalPrice;
     }
-    public String calculateProductsTotalPrice(){
+
+    public String calculateProductsTotalPrice() {
         driver.navigate().refresh();
-        return String.valueOf(calculateProduct1TotalPrice()+calculateProduct2TotalPrice());
+        return String.valueOf(calculateProduct1TotalPrice() + calculateProduct2TotalPrice());
     }
+
     public String subTotalPrice() {
         String sub = action.getElementText(subTotalPrice);
-        float subTotalPrice=Float.parseFloat(sub.substring(4));
+        float subTotalPrice = Float.parseFloat(sub.substring(4));
         return String.valueOf(subTotalPrice);
     }
 

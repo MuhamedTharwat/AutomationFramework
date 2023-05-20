@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="C:/Users/Mohamed Tharwat/IdeaProjects/AutomationTaskAmazon">
+        <classes>
+            <class name="com.amazon.tests.UserCanAddProductsToCart">
+                <methods>
+                    <include name="tc"/>
+                </methods>
+            </class>
+            <class name="com.jumia.tests.UserRegistrationTest">
+                <methods>
+                    <include name="Task1VerifyUserRegistration"/>
+                    <include name="Task2LoginWithCreatedUserAndAddProducts"/>
+                </methods>
+            </class>
+            <class name="com.jumia.tests.UserRegistrationTestWithDDT">
+                <methods>
+                    <include name="Task1VerifyUserRegistration"/>
+                    <include name="Task2LoginWithCreatedUserAndAddProducts"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

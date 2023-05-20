@@ -59,23 +59,30 @@ public class BaseClass {
         driver.get(properties.getProperty("url"));
     }
 
-    public static void waitUntilElementIsVisible(By element){
-        wait = new WebDriverWait(driver,Duration.ofSeconds(Long.parseLong(properties.getProperty("explicitWait"))));
+    public static void waitUntilElementIsVisible(By element) {
+        wait = new WebDriverWait(driver, Duration.ofSeconds(Long.parseLong(properties.getProperty("explicitWait"))));
         wait.until(ExpectedConditions.visibilityOfElementLocated(element));
     }
-    public static void waitUntilElementIsEnabled(By element){
-        wait = new WebDriverWait(driver,Duration.ofSeconds(Long.parseLong(properties.getProperty("explicitWait"))));
+
+    public static void waitUntilElementIsEnabled(By element) {
+        wait = new WebDriverWait(driver, Duration.ofSeconds(Long.parseLong(properties.getProperty("explicitWait"))));
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
-    public static void refreshCurrentPage(){
+
+    public static void refreshCurrentPage() {
         driver.navigate().refresh();
     }
-    public static void closeCurrentPage(){driver.close();}
-    public static ArrayList<String> getCurrentTabs(){
-        ArrayList<String>  tabs = new ArrayList<String>(driver.getWindowHandles());
+
+    public static void closeCurrentPage() {
+        driver.close();
+    }
+
+    public static ArrayList<String> getCurrentTabs() {
+        ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
         return tabs;
     }
-    public static void switchBetweenTabs(ArrayList<String> tabs,int tabIndex){
+
+    public static void switchBetweenTabs(ArrayList<String> tabs, int tabIndex) {
         driver.switchTo().window(tabs.get(tabIndex));
     }
 

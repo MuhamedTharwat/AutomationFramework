@@ -2,7 +2,6 @@
 
 Execution Record : https://www.linkedin.com/feed/update/urn:li:activity:7063440648808333312/
 
-
 📝 The main Framework include :
 
 -Selenium Webdriver
@@ -18,7 +17,6 @@ Execution Record : https://www.linkedin.com/feed/update/urn:li:activity:70634406
 -Data Driven approach "reading test data from excel file"
 
 💥The Framework can be applied on 2 main Websites with the following scenarios :
-
 
 1-Amazon:  
 Automate E2E Scenario on "https://www.amazon.eg/" Website
@@ -37,7 +35,7 @@ Automate E2E Scenario on "https://www.amazon.eg/" Website
 
 -make sure that all products is already added to carts
 
-2-Jumia:  
+2-Jumia:
 
 -Automate E2E Scenario on "https://www.jumia.com.eg/" Website
 
@@ -47,4 +45,5 @@ Automate E2E Scenario on "https://www.amazon.eg/" Website
 
 -Verify that the subtotal amount is calculated correctly according to the added item prices
 
-note: add the website URL u want to run the framework on in "config.properties" file from configurations/config.properties
+note: add the website URL u want to run the framework on in "config.properties" file from
+configurations/config.properties

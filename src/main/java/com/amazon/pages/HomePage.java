@@ -17,35 +17,39 @@ public class HomePage extends BaseClass {
     By videoGamesList = By.xpath("//div[@id='hmenu-content']//li[normalize-space()='Video Games']");
     By allVideoGamesOption = By.xpath("//div[@id='hmenu-content']//li[normalize-space()='All Video Games']");
 
-    public void switchLanguageEN()
-    {
+    public void switchLanguageEN() {
         action.jsHoverOnElement(languagesList);
         action.click(languageEn);
-    }public void switchLanguageAR()
-    {
+    }
+
+    public void switchLanguageAR() {
         action.jsHoverOnElement(languagesList);
         action.click(languageAR);
     }
-    public void openLoginPage(){
+
+    public void openLoginPage() {
         action.jsHoverOnElement(accountList);
         action.click(signInBtn);
     }
-    public void openCartPage(){
+
+    public void openCartPage() {
         action.click(cart);
     }
-    public void navigateToVideoGamesSection(){
+
+    public void navigateToVideoGamesSection() {
         action.click(allNavMenu);
         action.click(seeAllList);
         action.click(videoGamesList);
         action.click(allVideoGamesOption);
     }
+
     //this a more dynamic function to navigate to any section and select one of its options
-    public void navigateToSection(String sectionName,String selectedOptionName){
+    public void navigateToSection(String sectionName, String selectedOptionName) {
         action.click(allNavMenu);
         action.click(seeAllList);
         action.click(By.xpath(String.format
-                ("//div[@id='hmenu-content']//a[normalize-space()='%s']",sectionName)));
+                ("//div[@id='hmenu-content']//a[normalize-space()='%s']", sectionName)));
         action.click(By.xpath(String.format
-                ("//div[@id='hmenu-content']//a[normalize-space()='%s']",selectedOptionName)));
+                ("//div[@id='hmenu-content']//a[normalize-space()='%s']", selectedOptionName)));
     }
 }

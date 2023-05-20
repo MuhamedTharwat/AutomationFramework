@@ -11,10 +11,10 @@ public class LoginPage extends BaseClass {
     By continueBtn = By.id("continue");
     By signInBtn = By.id("signInSubmit");
 
-    public void login(String email,String password){
-        action.type(emailTxtBox,email);
+    public void login(String email, String password) {
+        action.type(emailTxtBox, email);
         action.click(continueBtn);
-        action.type(passwordTxtBox,password);
+        action.type(passwordTxtBox, password);
         action.click(signInBtn);
     }
 

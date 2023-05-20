@@ -5,15 +5,17 @@ import com.jumia.pages.CartPage;
 import com.jumia.pages.HomePage;
 import com.jumia.pages.LoginPage;
 import com.jumia.pages.ShirtsPage;
-import utility.DataProviders;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+import utility.DataProviders;
 
 public class UserRegistrationTestWithDDT extends BaseClass {
-    HomePage homePageObj=null;
-    LoginPage loginPageObj=null;
-    ShirtsPage shirtsPageObj=null;
-    CartPage cartPageObj=null;
+    HomePage homePageObj = null;
+    LoginPage loginPageObj = null;
+    ShirtsPage shirtsPageObj = null;
+    CartPage cartPageObj = null;
 
     @BeforeTest
     public void setUp() {
@@ -21,7 +23,7 @@ public class UserRegistrationTestWithDDT extends BaseClass {
         launchWeb();
     }
 
-    @Test(priority = 1,dataProvider = "JumiaCredentials",dataProviderClass = DataProviders.class)
+    @Test(priority = 1, dataProvider = "JumiaCredentials", dataProviderClass = DataProviders.class)
     public void Task1VerifyUserRegistration(String email, String password,
                                             String fname, String lname, String phone, String bdate) {
         homePageObj = new HomePage();
@@ -29,14 +31,14 @@ public class UserRegistrationTestWithDDT extends BaseClass {
 
         homePageObj.skipWelcomePopUp();
         homePageObj.openLoginPage();
-        loginPageObj.registerUser(email, password,fname,lname,phone,bdate);
+        loginPageObj.registerUser(email, password, fname, lname, phone, bdate);
         Assert.assertTrue(loginPageObj.validateAccountIsCreated());
         homePageObj.logOut();
     }
 
     @Test(dependsOnMethods = ("Task1VerifyUserRegistration"),
-            dataProvider = "JumiaLogin",dataProviderClass = DataProviders.class)
-    public void Task2LoginWithCreatedUserAndAddProducts(String email,String password) {
+            dataProvider = "JumiaLogin", dataProviderClass = DataProviders.class)
+    public void Task2LoginWithCreatedUserAndAddProducts(String email, String password) {
         homePageObj = new HomePage();
         loginPageObj = new LoginPage();
         shirtsPageObj = new ShirtsPage();
@@ -52,8 +54,9 @@ public class UserRegistrationTestWithDDT extends BaseClass {
         Assert.assertEquals(cartPageObj.calculateProductsTotalPrice(), cartPageObj.subTotalPrice());
 
     }
+
     @AfterTest
-    public void tearDown(){
+    public void tearDown() {
         closeCurrentPage();
     }
 

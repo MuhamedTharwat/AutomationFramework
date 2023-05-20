@@ -11,7 +11,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 public class UserRegistrationTest extends BaseClass {
-    HomePage homePageObj ;
+    HomePage homePageObj;
     LoginPage loginPageObj;
     ShirtsPage shirtsPageObj;
     CartPage cartPageObj;
@@ -21,39 +21,42 @@ public class UserRegistrationTest extends BaseClass {
         loadConfig();
         launchWeb();
     }
+
     @Test(priority = 1)
-    public void Task1VerifyUserRegistration(){
+    public void Task1VerifyUserRegistration() {
         homePageObj = new HomePage();
-        loginPageObj =new LoginPage();
+        loginPageObj = new LoginPage();
         shirtsPageObj = new ShirtsPage();
-        cartPageObj =new CartPage();
+        cartPageObj = new CartPage();
 
         homePageObj.skipWelcomePopUp();
         homePageObj.openLoginPage();
         loginPageObj.registerUser("jamefij283a1005@wiroute.com", "Test@1234@",
-            "aaa", "xxx", "01224232329","12201997");
+                "aaa", "xxx", "01224232329", "12201997");
         Assert.assertTrue(loginPageObj.validateAccountIsCreated());
         homePageObj.logOut();
     }
+
     @Test(dependsOnMethods = ("Task1VerifyUserRegistration"))
-    public void Task2LoginWithCreatedUserAndAddProducts(){
+    public void Task2LoginWithCreatedUserAndAddProducts() {
         homePageObj = new HomePage();
-        loginPageObj =new LoginPage();
+        loginPageObj = new LoginPage();
         shirtsPageObj = new ShirtsPage();
-        cartPageObj =new CartPage();
+        cartPageObj = new CartPage();
 
         //homePageObj.skipWelcomePopUp();
         homePageObj.openLoginPage();
-        loginPageObj.login("jamefij283a0002@wiroute.com","Test@1234@");
+        loginPageObj.login("jamefij283a0002@wiroute.com", "Test@1234@");
         homePageObj.navigateToShirtsCategory();
         shirtsPageObj.addTProduct1ToCart();
         shirtsPageObj.addTProduct2ToCart();
         refreshCurrentPage();
-        Assert.assertEquals(cartPageObj.calculateProductsTotalPrice(),cartPageObj.subTotalPrice());
+        Assert.assertEquals(cartPageObj.calculateProductsTotalPrice(), cartPageObj.subTotalPrice());
 
     }
+
     @AfterTest
-    public void tearDown(){
+    public void tearDown() {
         //closeCurrentPage();
     }
 

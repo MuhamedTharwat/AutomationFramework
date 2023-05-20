@@ -5,8 +5,6 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 
 public class ExcelFileManger {
     FileInputStream inputStream = null;
@@ -26,6 +24,7 @@ public class ExcelFileManger {
 
 
     }
+
     public int getRowCount(String sheetName) {
         int index = workbook.getSheetIndex(sheetName);
         sheet = workbook.getSheetAt(index);

@@ -11,18 +11,23 @@ import java.util.List;
 
 public class Action extends BaseClass {
     JavascriptExecutor js = (JavascriptExecutor) driver;
-    public void type(By element, String text){
+
+    public void type(By element, String text) {
         driver.findElement(element).sendKeys(text);
     }
-    public void click(By element){
+
+    public void click(By element) {
         driver.findElement(element).click();
     }
-    public List<WebElement> getElements(By element){
+
+    public List<WebElement> getElements(By element) {
         return driver.findElements(element);
     }
-    public String getElementText(By element){
+
+    public String getElementText(By element) {
         return driver.findElement(element).getText();
     }
+
     public boolean findElement(By element) {
         boolean flag = false;
         try {
@@ -41,6 +46,7 @@ public class Action extends BaseClass {
         }
         return flag;
     }
+
     public void selectByValue(By element, String value) {
         try {
             Select s = new Select(driver.findElement(element));
@@ -53,6 +59,7 @@ public class Action extends BaseClass {
         }
 
     }
+
     public void selectCheckBox(By element) {
         boolean flag = false;
         flag = findElement(element);
@@ -93,7 +100,7 @@ public class Action extends BaseClass {
         js.executeScript("arguments[0].click();", webElement);
     }
 
-    public void jsOpenLinkInNewTab(String link){
+    public void jsOpenLinkInNewTab(String link) {
         String newTabScript = "window.open('" + link + "','_blank');";
         js.executeScript(newTabScript);
     }
